@@ -18,4 +18,17 @@ const int wardID [Wards_Count] = {1,2,3,4};
 const double dailyBedRatePerLKRDay [Wards_Count] = {3000.00,6000.00,12000.00,25000.00};
 const int totalBedCapacity [Wards_Count] = {20,10,10,05};
 
+char patientName [MAX_Patients][50];
+int paientAge [MAX_Patients]={0};
+int paientmergencyLevel[MAX_Patients]={0};
+int paientSpecialtyID [MAX_Patients]={0};
+int paientyWardID [MAX_Patients]={0};
+int paientDaysAdmitted [MAX_Patients]={0};
+int paientestimatedWaitingTime [MAX_Patients]={0};
+double paientEmergencySurcharge [MAX_Patients]={0};
+double paienttotalWardStayCost [MAX_Patients]={0};
+double paientGrossTotalBill [MAX_Patients]={0};
+double paientAgeSubsidyDiscount [MAX_Patients]={0};
+double paientFinalAmountPayable [MAX_Patients]={0};
+
 
