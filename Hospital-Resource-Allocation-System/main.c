@@ -2,7 +2,8 @@
 #include <stdlib.h>
 //function prototype
 void printMenu();
-
+void listSpecialties();
+void listWardsData();
 
 
 int main(){
@@ -20,8 +21,10 @@ int main(){
             case 3: //Display bed occupancy status
                 break;
             case 4: //Display doctor specialties
+                listSpecialties();
                 break;
             case 5: //Display hospital wards
+                listWardsData();
                 break;
             case 6: //Generate performance report
                 break;
