@@ -22,6 +22,15 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="Booking.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Data.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="HospitalDisplay.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
