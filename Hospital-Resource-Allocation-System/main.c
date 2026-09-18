@@ -4,6 +4,7 @@
 void printMenu();
 void listSpecialties();
 void listWardsData();
+void patientRegistration();
 
 
 int main(){
@@ -15,6 +16,7 @@ int main(){
 
         switch (menuNum){
             case 1: //Register a patient and generate a bill
+                patientRegistration();
                 break;
             case 2: //Display priority order
                 break;

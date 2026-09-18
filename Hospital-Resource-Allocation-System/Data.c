@@ -22,7 +22,7 @@ char patientName [MAX_Patients][50];
 int paientAge [MAX_Patients]={0};
 int paientmergencyLevel[MAX_Patients]={0};
 int paientSpecialtyID [MAX_Patients]={0};
-int paientyWardID [MAX_Patients]={0};
+int paientWardID [MAX_Patients]={0};
 int paientDaysAdmitted [MAX_Patients]={0};
 int paientestimatedWaitingTime [MAX_Patients]={0};
 double paientEmergencySurcharge [MAX_Patients]={0};
@@ -30,5 +30,7 @@ double paienttotalWardStayCost [MAX_Patients]={0};
 double paientGrossTotalBill [MAX_Patients]={0};
 double paientAgeSubsidyDiscount [MAX_Patients]={0};
 double paientFinalAmountPayable [MAX_Patients]={0};
-
-
+int specialtyQueueCount[Specialty_Count] = {0, 0, 0, 0};
+int paientID[MAX_Patients] = {0};
+double paientBaseConsultationFee[MAX_Patients] = {0};
+int paientCount =0;
