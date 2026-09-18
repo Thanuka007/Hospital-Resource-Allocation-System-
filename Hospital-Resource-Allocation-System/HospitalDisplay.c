@@ -14,6 +14,20 @@ extern const char WardsName [Wards_Count][50];
 extern const int wardID [Wards_Count];
 extern const double dailyBedRatePerLKRDay [Wards_Count];
 extern const int totalBedCapacity [Wards_Count];
+extern int patientID[MAX_Patients];
+extern char patientName [MAX_Patients][50];
+extern int patientAge[MAX_Patients];
+extern int patientSpecialtyID [MAX_Patients];
+extern int patientWardID [MAX_Patients];
+extern int patientAssignedBed[MAX_Patients];
+extern int patientmergencyLevel[MAX_Patients];
+extern double patientBaseConsultationFee[MAX_Patients];
+extern double patientEmergencySurcharge [MAX_Patients];
+extern double patienttotalWardStayCost [MAX_Patients];
+extern double patientGrossTotalBill [MAX_Patients];
+extern double patientAgeSubsidyDiscount [MAX_Patients];
+extern double patientFinalAmountPayable [MAX_Patients];
+extern int patientestimatedWaitingTime [MAX_Patients];
 
 void printMenu (){
     printf("\n============SMART HOSPITAL MAIN MENU============\n");
@@ -49,3 +63,31 @@ void listWardsData (){
 
     }
 }
+
+void displayPatientBill(int patientIndex){
+    const char urgencyNames[4][10] = {"","Normal","Urgent","Critical"};
+    printf("============================================================\n");
+    printf("           SMART HOSPITAL ADMISSION & BILL\n");
+    printf("------------------------------------------------------------\n");
+    printf("Patient ID              : PAT- %d\n",patientID[patientIndex]);
+    printf("Patient Name            : %s\n",patientName[patientIndex]);
+    printf("Age                     : %d Years%s\n",patientAge[patientIndex],(patientAge[patientIndex] < 5 || patientAge[patientIndex] > 65) ? " (15% Subsidy Eligible)" : "");
+    printf("Specialty          : %s\n",specialtyNames[patientSpecialtyID[patientIndex]]-1);
+    if (patientWardID[patientIndex] == 0) {
+        printf("Assigned Ward           : OPD\n");
+    } else {
+        printf("Assigned Ward           : %s (Bed #%d)\n",WardsName[patientWardID[patientIndex] - 1], patientAssignedBed[patientIndex]);
+    }
+    printf("Urgency Level           : Level %d (%s)\n", patientmergencyLevel[patientIndex],urgencyNames[patientmergencyLevel[patientIndex]]);
+    printf("------------------------------------------------------------\n");
+    printf("Base Consultation Fee   : LKR %.2f",patientBaseConsultationFee[patientIndex]);
+    printf("Emergency Surcharge     : LKR %.2f",patientEmergencySurcharge[patientIndex]);
+    printf("Ward Stay Cost (2 Days) : LKR %.2f",patienttotalWardStayCost[patientIndex]);
+    printf("------------------------------------------------------------\n");
+    printf("Gross Total Bill        : LKR %.2f",patientGrossTotalBill[patientIndex]);
+    printf("Age Subsidy Discount    : LKR %.2f",patientAgeSubsidyDiscount[patientIndex]);
+    printf("------------------------------------------------------------\n");
+    printf("Final Payable Amount    : LKR %.2f",patientFinalAmountPayable[patientIndex]);
+    printf("Estimated Waiting Time  : %d mins%s\n", patientestimatedWaitingTime[patientIndex],patientestimatedWaitingTime[patientIndex] == 0 ? " (Immediate Attention)" : "");
+}
+
