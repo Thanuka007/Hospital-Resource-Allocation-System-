@@ -151,13 +151,15 @@ void patientRegistration (){
     patientID[patientCount] = 1001 + patientCount;
     patientBaseConsultationFee[patientCount] = baseConsultationFee[specialtyIndex];
 
-    if (patientmergencyLevel[patientCount]==1){
-        patientEmergencySurcharge [patientCount]=patientBaseConsultationFee[patientCount] *0.20;
+    if (patientmergencyLevel[patientCount] == 1) {
+        patientEmergencySurcharge[patientCount] = 0.0;
+    }
+    else if (patientmergencyLevel[patientCount] == 2) {
+            patientEmergencySurcharge[patientCount] =patientBaseConsultationFee[patientCount] * 0.20;
     }
     else {
-        patientEmergencySurcharge [patientCount]=patientBaseConsultationFee[patientCount] *0.50;
-    }
-
+        patientEmergencySurcharge[patientCount] =patientBaseConsultationFee[patientCount] * 0.50;
+}
     if (choice==1){
         wardIndex = patientWardID[patientCount] - 1;
         patienttotalWardStayCost [patientCount]= patientDaysAdmitted[patientCount]*dailyBedRatePerLKRDay [wardIndex];
