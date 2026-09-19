@@ -14,8 +14,16 @@ int main(){
     int menuNum ;
     do{
         printMenu();
-        printf("Enter an option :");
-        scanf("%d",&menuNum);
+        do {
+            printf("Enter a option (1 to 7) : ");
+
+            if (scanf("%d",&menuNum)!= 1){
+                printf("Invalid input.Please enter a number.\n");
+                while (getchar()!= '\n');
+                menuNum =0 ;
+            }
+        }while (menuNum < 1 || menuNum >7);
+
 
         switch (menuNum){
             case 1: //Register a patient and generate a bill
