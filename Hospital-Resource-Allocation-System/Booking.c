@@ -98,15 +98,39 @@ void patientRegistration (){
 
         } while (patientSpecialtyID[patientCount] < 1 ||patientSpecialtyID[patientCount] > Specialty_Count);
 
-    printf("Is Admitted to Ward? (1 = Yes, 0 = No):");
-    scanf("%d",&choice);
+    do {
+        printf("Is admitted to ward? (1 = Yes, 0 = No): ");
+
+        if (scanf("%d", &choice) != 1) {
+            printf("Invalid input. Enter 1 or 0.\n");
+            while (getchar() != '\n');
+            choice = -1;
+        }
+
+    } while (choice != 0 && choice != 1);
 
     if (choice==1){
-        printf("Input Ward ID (1 to 4): ");
-        scanf("%d", &patientWardID[patientCount]);
+        do {
+            printf("Input Ward ID (1 to 4): ");
 
-        printf("Days admitted: ");
-        scanf("%d", &patientDaysAdmitted[patientCount]);
+            if (scanf("%d", &patientWardID[patientCount]) != 1) {
+                printf("Invalid input. Please enter a number.\n");
+                while (getchar() != '\n');
+                patientWardID[patientCount] = 0;
+            }
+
+        } while (patientWardID[patientCount] < 1 ||patientWardID[patientCount] > Wards_Count);
+
+        do {
+            printf("Days admitted: ");
+
+            if (scanf("%d", &patientDaysAdmitted[patientCount]) != 1) {
+                printf("Invalid input. Please enter a number.\n");
+                while (getchar() != '\n');
+                patientDaysAdmitted[patientCount] = 0;
+            }
+
+        } while (patientDaysAdmitted[patientCount] < 1);
 
         wardIndex = patientWardID[patientCount]-1;
         int bedIndex = avilabelBed(wardIndex);
