@@ -56,8 +56,15 @@ void patientRegistration (){
     }
     printf("Enter patient name                    :");
     scanf("%s",patientName [patientCount]);
-    printf("Enter patient Age                     :");
-    scanf("%d",&patientAge[patientCount]);
+    do {
+        printf("Enter patient age: ");
+        if (scanf("%d", &patientAge[patientCount]) != 1) {
+            printf("Invalid input. Please enter a number.\n");
+            while (getchar() != '\n');
+            patientAge[patientCount] = -1;
+        }
+    } while (patientAge[patientCount] < 0 ||
+         patientAge[patientCount] > 130);
 
     printf("Enter Emergency / Triage Level (1 = Normal, 2 = Urgent, 3 = Critical) :");
     scanf("%d", &patientmergencyLevel[patientCount]);
