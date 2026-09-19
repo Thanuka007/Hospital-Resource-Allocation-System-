@@ -78,8 +78,25 @@ void patientRegistration (){
     }while (patientmergencyLevel[patientCount] < 1 ||patientmergencyLevel[patientCount] > 3);
     printf("========================================================================\n");
     listSpecialties();
-        printf("Enter Specialty ID (1 to 4)           : ");
-        scanf("%d", &patientSpecialtyID[patientCount]);
+        do {
+            printf("Enter Specialty ID (1 to 4): ");
+
+            if (scanf("%d", &patientSpecialtyID[patientCount]) != 1) {
+                printf("Invalid input. Please enter a number.\n");
+                while (getchar() != '\n');
+                patientSpecialtyID[patientCount] = 0;
+                continue;
+            }
+
+            specialtyIndex = patientSpecialtyID[patientCount] - 1;
+
+            if (specialtyIndex >= 0 &&
+                specialtyIndex < Specialty_Count &&specialtyQueueCount[specialtyIndex] >= dailyPatientCap[specialtyIndex]) {
+                printf("This specialty has reached its daily patient cap.\n");
+                patientSpecialtyID[patientCount] = 0;
+            }
+
+        } while (patientSpecialtyID[patientCount] < 1 ||patientSpecialtyID[patientCount] > Specialty_Count);
 
     printf("Is Admitted to Ward? (1 = Yes, 0 = No):");
     scanf("%d",&choice);
