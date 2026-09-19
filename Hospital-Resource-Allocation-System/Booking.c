@@ -55,7 +55,7 @@ void patientRegistration (){
         return;
     }
     printf("Enter patient name                    :");
-    scanf("%s",patientName [patientCount]);
+    scanf(" %49[^\n]",patientName [patientCount]);
     do {
         printf("Enter patient age: ");
         if (scanf("%d", &patientAge[patientCount]) != 1) {
@@ -135,9 +135,11 @@ void patientRegistration (){
         wardIndex = patientWardID[patientCount]-1;
         int bedIndex = avilabelBed(wardIndex);
         if (bedIndex == -1){
-            printf("No bed is available in %s. Patient not admitted.\n", WardsName[wardIndex]);
-            patientID[patientCount] = 0;
-            patientDaysAdmitted[patientCount]=0;
+            printf("No bed is available in %s. Patient is recorded as OPD.\n", WardsName[wardIndex]);
+            patientWardID[patientCount] = 0;
+            patientAssignedBed[patientCount] = 0;
+            patientDaysAdmitted[patientCount] = 0;
+            choice = 0;
         }
         else {
             patientAssignedBed[patientCount]=bedIndex +1;
@@ -157,15 +159,15 @@ void patientRegistration (){
     patientBaseConsultationFee[patientCount] = baseConsultationFee[specialtyIndex];
 
     if (patientmergencyLevel[patientCount]==1){
-        patientEmergencySurcharge [patientCount]=baseConsultationFee[patientCount] *0.20;
+        patientEmergencySurcharge [patientCount]=patientBaseConsultationFee[patientCount] *0.20;
     }
     else {
-        patientEmergencySurcharge [patientCount]=baseConsultationFee[patientCount] *0.50;
+        patientEmergencySurcharge [patientCount]=patientBaseConsultationFee[patientCount] *0.50;
     }
 
     if (choice==1){
         wardIndex = patientWardID[patientCount] - 1;
-        patienttotalWardStayCost [patientCount]= patientDaysAdmitted[patientCount]*dailyBedRatePerLKRDay [wardID[patientCount]];
+        patienttotalWardStayCost [patientCount]= patientDaysAdmitted[patientCount]*dailyBedRatePerLKRDay [wardIndex];
     }else {
        patienttotalWardStayCost[patientCount] = 0.0 ;
     }
