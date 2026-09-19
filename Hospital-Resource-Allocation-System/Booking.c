@@ -54,17 +54,17 @@ void patientRegistration (){
         printf("Patient storage is full.\n");
         return;
     }
-    printf("Enter patient name :");
+    printf("Enter patient name                    :");
     scanf("%s",patientName [patientCount]);
-    printf("Enter patient Age :");
+    printf("Enter patient Age                     :");
     scanf("%d",&patientAge [patientCount]);
     printf("Enter Emergency / Triage Level (1 = Normal, 2 = Urgent, 3 = Critical) :");
     scanf("%d",&patientmergencyLevel[patientCount]);
 
-    printf("===========================================================\n");
+    printf("========================================================================\n");
     listSpecialties();
         do {
-        printf("Enter Specialty ID (1 to 4): ");
+        printf("Enter Specialty ID (1 to 4)           : ");
         scanf("%d", &patientSpecialtyID[patientCount]);
         specialtyIndex = patientSpecialtyID[patientCount] - 1;
         if (specialtyIndex >= 0 && specialtyIndex < Specialty_Count &&
@@ -78,9 +78,9 @@ void patientRegistration (){
     scanf("%d",&choice);
 
     if (choice==1){
-        printf("Input Ward ID (1 to 4):");
+        printf("Input Ward ID (1 to 4)                :");
         scanf("%d",&patientWardID[patientCount]);
-        printf("Days Admitted :");
+        printf("Days Admitted                         :");
         scanf("%d",&patientDaysAdmitted[patientCount]);
 
         wardIndex = patientWardID[patientCount]-1;

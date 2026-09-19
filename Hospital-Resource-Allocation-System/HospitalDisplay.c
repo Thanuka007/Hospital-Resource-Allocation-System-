@@ -56,6 +56,7 @@ void printMenu (){
 void listSpecialties (){
     int i;
     printf("Doctor Specialties Data\n");
+    printf("------------------------------------------------------------------------\n");
     printf("%-12s %-30s %-28s %-25s %-18s\n","Specialty ID","Specialty Name","Base Consultation Fee (LKR)","Consultation Time/Patient","Daily Patient Cap");
 
     for (i=0;i<Specialty_Count;++i){
@@ -67,6 +68,7 @@ void listSpecialties (){
 void listWardsData (){
     int i;
     printf("Hospital Wards Data\n");
+    printf("------------------------------------------------------------------------\n");
     printf("%-10s %-30s %-28s %-20s %-18s\n","Ward ID","Ward Name","Daily Bed Rate (LKR / Day)","Total Bed Capacity","Bed Availability");
 
     for (i=0;i< Wards_Count;++i){
