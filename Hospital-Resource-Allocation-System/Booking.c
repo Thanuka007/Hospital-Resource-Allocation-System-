@@ -25,6 +25,7 @@ extern int patientID[MAX_Patients];
 extern double patientBaseConsultationFee[MAX_Patients];
 extern const double baseConsultationFee [Specialty_Count];
 extern const double dailyBedRatePerLKRDay [Wards_Count];
+extern const int wardID [Wards_Count];
 
 void listSpecialties();
 void displayPatientBill(int patientIndex);
@@ -85,7 +86,7 @@ void patientRegistration (){
 
     if (choice==1){
         wardIndex = patientWardID[patientCount] - 1;
-        patienttotalWardStayCost [patientCount]= patientDaysAdmitted[patientCount]*dailyBedRatePerLKRDay [Wards_Count];
+        patienttotalWardStayCost [patientCount]= patientDaysAdmitted[patientCount]*dailyBedRatePerLKRDay [wardID[patientCount]];
     }else {
        patienttotalWardStayCost[patientCount] = 0.0 ;
     }

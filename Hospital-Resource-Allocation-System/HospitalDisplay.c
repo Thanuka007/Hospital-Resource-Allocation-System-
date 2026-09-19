@@ -59,7 +59,7 @@ void listWardsData (){
     printf("%-10s %-30s %-28s %-20s %-18s\n","Ward ID","Ward Name","Daily Bed Rate (LKR / Day)","Total Bed Capacity","Bed Availability");
 
     for (i=0;i< Wards_Count;++i){
-        printf("%-10d %-30s %-28.2f %-20d %-18d\n",wardID[i],WardsName[i],dailyBedRatePerLKRDay[i],totalBedCapacity[i]);
+        printf("%-10d %-30s %-28.2f %-20d %-18d\n",wardID[i],WardsName[i],dailyBedRatePerLKRDay[i],totalBedCapacity[i],0);
 
     }
 }
@@ -72,22 +72,24 @@ void displayPatientBill(int patientIndex){
     printf("Patient ID              : PAT- %d\n",patientID[patientIndex]);
     printf("Patient Name            : %s\n",patientName[patientIndex]);
     printf("Age                     : %d Years%s\n",patientAge[patientIndex],(patientAge[patientIndex] < 5 || patientAge[patientIndex] > 65) ? " (15% Subsidy Eligible)" : "");
-    printf("Specialty          : %s\n",specialtyNames[patientSpecialtyID[patientIndex]]-1);
+    printf("Specialty               : %s\n",specialtyNames[patientSpecialtyID[patientIndex]-1]);
     if (patientWardID[patientIndex] == 0) {
-        printf("Assigned Ward           : OPD\n");
+        printf("Assigned Ward           : \n");
     } else {
         printf("Assigned Ward           : %s (Bed #%d)\n",WardsName[patientWardID[patientIndex] - 1], patientAssignedBed[patientIndex]);
     }
     printf("Urgency Level           : Level %d (%s)\n", patientmergencyLevel[patientIndex],urgencyNames[patientmergencyLevel[patientIndex]]);
     printf("------------------------------------------------------------\n");
-    printf("Base Consultation Fee   : LKR %.2f",patientBaseConsultationFee[patientIndex]);
-    printf("Emergency Surcharge     : LKR %.2f",patientEmergencySurcharge[patientIndex]);
-    printf("Ward Stay Cost (2 Days) : LKR %.2f",patienttotalWardStayCost[patientIndex]);
+    printf("Base Consultation Fee   : LKR %.2f\n",patientBaseConsultationFee[patientIndex]);
+    printf("Emergency Surcharge     : LKR %.2f\n",patientEmergencySurcharge[patientIndex]);
+    printf("Ward Stay Cost          : LKR %.2f\n",patienttotalWardStayCost[patientIndex]);
     printf("------------------------------------------------------------\n");
-    printf("Gross Total Bill        : LKR %.2f",patientGrossTotalBill[patientIndex]);
-    printf("Age Subsidy Discount    : LKR %.2f",patientAgeSubsidyDiscount[patientIndex]);
+    printf("Gross Total Bill        : LKR %.2f\n",patientGrossTotalBill[patientIndex]);
+    printf("Age Subsidy Discount    : LKR %.2f\n",patientAgeSubsidyDiscount[patientIndex]);
     printf("------------------------------------------------------------\n");
-    printf("Final Payable Amount    : LKR %.2f",patientFinalAmountPayable[patientIndex]);
-    printf("Estimated Waiting Time  : %d mins%s\n", patientestimatedWaitingTime[patientIndex],patientestimatedWaitingTime[patientIndex] == 0 ? " (Immediate Attention)" : "");
+    printf("Final Payable Amount    : LKR %.2f\n",patientFinalAmountPayable[patientIndex]);
+    printf("Estimated Waiting Time  : %d mins\n", patientestimatedWaitingTime[patientIndex]);
+    printf("============================================================\n");
 }
+
 
