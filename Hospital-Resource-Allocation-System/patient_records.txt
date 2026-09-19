@@ -1,0 +1,21 @@
+
+============================================================
+              SMART HOSPITAL PATIENT RECORD
+============================================================
+Patient ID              : PAT-1001
+Patient Name            : thanuka
+Age                     : 21 Years
+Emergency Level         : 3
+Specialty               : General Practice (OPD)
+Ward                    : Paediatric Ward
+Bed Number              : 1
+Days Admitted           : 10
+------------------------------------------------------------
+Base Consultation Fee   : LKR 1500.00
+Emergency Surcharge     : LKR 750.00
+Ward Stay Cost          : LKR 60000.00
+------------------------------------------------------------
+Gross Total Bill        : LKR 62250.00
+Age Subsidy Discount    : LKR 0.00
+Final Amount Payable    : LKR 62250.00
+============================================================

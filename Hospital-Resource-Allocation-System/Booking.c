@@ -34,6 +34,7 @@ extern int patientAssignedBed[MAX_Patients];
 void listSpecialties();
 void displayPatientBill(int patientIndex);
 void clearscreen();
+void savePatientRecord(int patientIndex);
 
 
 
@@ -54,10 +55,10 @@ void patientRegistration (){
         printf("Patient storage is full.\n");
         return;
     }
-    printf("Enter patient name                    :");
+    printf("Enter patient name                       :");
     scanf(" %49[^\n]",patientName [patientCount]);
     do {
-        printf("Enter patient age: ");
+        printf("Enter patient age                        :");
         if (scanf("%d", &patientAge[patientCount]) != 1) {
             printf("Invalid input. Please enter a number.\n");
             while (getchar() != '\n');
@@ -74,12 +75,11 @@ void patientRegistration (){
             while (getchar() != '\n');
             patientmergencyLevel[patientCount] = 0;
         }
-
     }while (patientmergencyLevel[patientCount] < 1 ||patientmergencyLevel[patientCount] > 3);
     printf("========================================================================\n");
     listSpecialties();
         do {
-            printf("Enter Specialty ID (1 to 4): ");
+            printf("Enter Specialty ID (1 to 4)              : ");
 
             if (scanf("%d", &patientSpecialtyID[patientCount]) != 1) {
                 printf("Invalid input. Please enter a number.\n");
@@ -87,49 +87,43 @@ void patientRegistration (){
                 patientSpecialtyID[patientCount] = 0;
                 continue;
             }
-
             specialtyIndex = patientSpecialtyID[patientCount] - 1;
-
             if (specialtyIndex >= 0 &&
                 specialtyIndex < Specialty_Count &&specialtyQueueCount[specialtyIndex] >= dailyPatientCap[specialtyIndex]) {
                 printf("This specialty has reached its daily patient cap.\n");
                 patientSpecialtyID[patientCount] = 0;
             }
-
         } while (patientSpecialtyID[patientCount] < 1 ||patientSpecialtyID[patientCount] > Specialty_Count);
 
     do {
-        printf("Is admitted to ward? (1 = Yes, 0 = No): ");
+        printf("Is admitted to ward? (1 = Yes, 0 = No)   : ");
 
         if (scanf("%d", &choice) != 1) {
             printf("Invalid input. Enter 1 or 0.\n");
             while (getchar() != '\n');
             choice = -1;
         }
-
     } while (choice != 0 && choice != 1);
 
     if (choice==1){
         do {
-            printf("Input Ward ID (1 to 4): ");
+            printf("Input Ward ID (1 to 4)                   : ");
 
             if (scanf("%d", &patientWardID[patientCount]) != 1) {
                 printf("Invalid input. Please enter a number.\n");
                 while (getchar() != '\n');
                 patientWardID[patientCount] = 0;
             }
-
         } while (patientWardID[patientCount] < 1 ||patientWardID[patientCount] > Wards_Count);
 
         do {
-            printf("Days admitted: ");
+            printf("Days admitted                            : ");
 
             if (scanf("%d", &patientDaysAdmitted[patientCount]) != 1) {
                 printf("Invalid input. Please enter a number.\n");
                 while (getchar() != '\n');
                 patientDaysAdmitted[patientCount] = 0;
             }
-
         } while (patientDaysAdmitted[patientCount] < 1);
 
         wardIndex = patientWardID[patientCount]-1;
@@ -148,7 +142,6 @@ void patientRegistration (){
     }else {
         patientDaysAdmitted [patientCount]=0;
     }
-
 
     specialtyIndex = patientSpecialtyID[patientCount] - 1;
     /* Waiting time is calculated BEFORE this patient is added to the queue. */
@@ -185,11 +178,11 @@ void patientRegistration (){
     }
 
     patientFinalAmountPayable [patientCount] = patientGrossTotalBill [patientCount]-patientAgeSubsidyDiscount [patientCount];
+    savePatientRecord(patientCount);
 
     clearscreen();
     displayPatientBill(patientCount);
 
     patientCount++;
-
 
 }

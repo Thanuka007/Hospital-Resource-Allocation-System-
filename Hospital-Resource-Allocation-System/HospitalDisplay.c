@@ -48,7 +48,8 @@ void printMenu (){
     printf("04. Display doctor specialties\n");
     printf("05. Display hospital wards\n");
     printf("06. Generate performance report\n");
-    printf("07. Exit\n");
+    printf("07. View saved patient records\n");
+    printf("08. Save and Exit\n");
     printf("\n============************************============\n");
     }
 

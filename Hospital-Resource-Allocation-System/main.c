@@ -9,20 +9,25 @@ void displayPriorityOrder();
 void displayBedOccupancyStatus();
 void generatePerformanceReport();
 void clearscreen();
+void loadBedStatus();
+void saveBedStatus();
+void displaySavedPatientRecords();
+
 
 int main(){
     int menuNum ;
+    loadBedStatus();
     do{
         printMenu();
         do {
-            printf("Enter a option (1 to 7) : ");
+            printf("Enter a option (1 to 8) : ");
 
             if (scanf("%d",&menuNum)!= 1){
                 printf("Invalid input.Please enter a number.\n");
                 while (getchar()!= '\n');
                 menuNum =0 ;
             }
-        }while (menuNum < 1 || menuNum >7);
+        }while (menuNum < 1 || menuNum >8);
 
 
         switch (menuNum){
@@ -52,12 +57,17 @@ int main(){
                 break;
             case 7:
                 clearscreen();
-                printf("Exit program ,GOODBYE");
+                displaySavedPatientRecords();
+                break;
+            case 8:
+                clearscreen();
+                saveBedStatus();
+                printf("Bed status saved. Exit program, GOODBYE");
                 break;
             default:
-                printf("Invalid number,(1-7)");
+                printf("Invalid number,(1-8)");
         }
-    }while (menuNum != 7);
+    }while (menuNum != 8);
     return 0;
 
 
