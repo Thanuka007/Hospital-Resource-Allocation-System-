@@ -33,6 +33,7 @@ extern int patientAssignedBed[MAX_Patients];
 
 void listSpecialties();
 void displayPatientBill(int patientIndex);
+void clearscreen();
 
 
 
@@ -134,6 +135,7 @@ void patientRegistration (){
 
     patientFinalAmountPayable [patientCount] = patientGrossTotalBill [patientCount]-patientAgeSubsidyDiscount [patientCount];
 
+    clearscreen();
     displayPatientBill(patientCount);
 
     patientCount++;

@@ -192,9 +192,9 @@ void generatePerformanceReport() {
                (100.0 * occupied) / totalBedCapacity[j]);
     }
     if (highestPayingPatient == -1) {
-        printf("Highest-paying patient  : No patients registered.\n");
+        printf("Highest-paying patient      : No patients registered.\n");
     } else {
-        printf("Highest-paying patient  : PAT-%04d - %s (LKR %.2f)\n",
+        printf("Highest-paying patient      : PAT-%04d - %s (LKR %.2f)\n",
                patientID[highestPayingPatient], patientName[highestPayingPatient],
                patientFinalAmountPayable[highestPayingPatient]);
     }
