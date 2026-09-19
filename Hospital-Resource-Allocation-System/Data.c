@@ -34,4 +34,5 @@ double patientFinalAmountPayable [MAX_Patients]={0};
 int specialtyQueueCount[Specialty_Count] = {0, 0, 0, 0};
 int patientID[MAX_Patients] = {0};
 double patientBaseConsultationFee[MAX_Patients] = {0};
+int bedOccupancy [4][20] = {0};
 int patientCount =0;

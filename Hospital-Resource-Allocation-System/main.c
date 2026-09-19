@@ -5,6 +5,8 @@ void printMenu();
 void listSpecialties();
 void listWardsData();
 void patientRegistration();
+void displayPriorityOrder();
+void displayBedOccupancyStatus();
 
 
 int main(){
@@ -19,8 +21,10 @@ int main(){
                 patientRegistration();
                 break;
             case 2: //Display priority order
+                displayPriorityOrder();
                 break;
             case 3: //Display bed occupancy status
+                displayBedOccupancyStatus();
                 break;
             case 4: //Display doctor specialties
                 listSpecialties();

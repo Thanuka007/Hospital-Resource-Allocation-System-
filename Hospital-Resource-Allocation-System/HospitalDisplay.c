@@ -28,6 +28,16 @@ extern double patientGrossTotalBill [MAX_Patients];
 extern double patientAgeSubsidyDiscount [MAX_Patients];
 extern double patientFinalAmountPayable [MAX_Patients];
 extern int patientestimatedWaitingTime [MAX_Patients];
+extern int patientCount;
+extern int bedOccupancy [4][20];
+
+int getOccupiedBedCount(int wardIndex) {
+    int i, count = 0;
+    for (i = 0; i < totalBedCapacity[wardIndex]; ++i) {
+        count += bedOccupancy[wardIndex][i];
+    }
+    return count;
+}
 
 void printMenu (){
     printf("\n============SMART HOSPITAL MAIN MENU============\n");
@@ -74,7 +84,7 @@ void displayPatientBill(int patientIndex){
     printf("Age                     : %d Years%s\n",patientAge[patientIndex],(patientAge[patientIndex] < 5 || patientAge[patientIndex] > 65) ? " (15% Subsidy Eligible)" : "");
     printf("Specialty               : %s\n",specialtyNames[patientSpecialtyID[patientIndex]-1]);
     if (patientWardID[patientIndex] == 0) {
-        printf("Assigned Ward           : \n");
+        printf("Assigned Ward           : Not Admitted  \n");
     } else {
         printf("Assigned Ward           : %s (Bed #%d)\n",WardsName[patientWardID[patientIndex] - 1], patientAssignedBed[patientIndex]);
     }
@@ -92,4 +102,62 @@ void displayPatientBill(int patientIndex){
     printf("============================================================\n");
 }
 
+
+void displayPriorityOrder() {
+    int order[MAX_Patients];
+    int i, j, temporary, patientIndex;
+    const char urgencyNames[4][10] = {"", "Normal", "Urgent", "Critical"};
+
+    if (patientCount == 0) {
+        printf("\nNo patients have been registered yet.\n");
+        return;
+    }
+    for (i = 0; i < patientCount; ++i) order[i] = i;
+
+    for (i = 0; i < patientCount - 1; ++i) {
+        for (j = i + 1; j < patientCount; ++j) {
+            if (patientmergencyLevel[order[j]] > patientmergencyLevel[order[i]]) {
+                temporary = order[i];
+                order[i] = order[j];
+                order[j] = temporary;
+            }
+        }
+    }
+
+    printf("\nPriority Order (Critical -> Urgent -> Normal)\n");
+    printf("%-12s %-25s %-12s %-20s \n", "Patient ID", "Name", "Urgency",
+           "Specialty");
+    for (i = 0; i < patientCount; ++i) {
+        patientIndex = order[i];
+        printf("PAT-%04d     %-25.25s %-12s %-20.20s\n", patientID[patientIndex],
+        patientName[patientIndex], urgencyNames[patientmergencyLevel[patientIndex]],specialtyNames[patientSpecialtyID[patientIndex] - 1]);
+    }
+}
+
+
+void displayBedOccupancyStatus() {
+    int i, j, occupied;
+
+    printf("\n====================================================\n");
+    printf("                 BED OCCUPANCY STATUS\n");
+    printf("          0 = Available | 1 = Occupied\n");
+    printf("====================================================\n");
+
+    for (i = 0; i < Wards_Count; ++i) {
+        printf("\nWard ID   : %d\n", i + 1);
+        printf("Ward Name : %s\n", WardsName[i]);
+        printf("Beds      : ");
+
+        for (j = 0; j < totalBedCapacity[i]; ++j) {
+            printf("%d ", bedOccupancy[i][j]);
+        }
+
+        occupied = getOccupiedBedCount(i);
+
+        printf("\nOccupied  : %d\n", occupied);
+        printf("Available : %d\n", totalBedCapacity[i] - occupied);
+        printf("Capacity  : %d\n", totalBedCapacity[i]);
+        printf("----------------------------------------------------\n");
+    }
+}
 
