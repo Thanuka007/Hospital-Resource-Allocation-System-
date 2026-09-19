@@ -66,15 +66,22 @@ void listSpecialties (){
     }
 }
 
-void listWardsData (){
-    int i;
+void listWardsData() {
+    int i, occupied;
+
     printf("Hospital Wards Data\n");
     printf("------------------------------------------------------------------------\n");
     printf("%-10s %-30s %-28s %-20s %-18s\n","Ward ID","Ward Name","Daily Bed Rate (LKR / Day)","Total Bed Capacity","Bed Availability");
 
-    for (i=0;i< Wards_Count;++i){
-        printf("%-10d %-30s %-28.2f %-20d %-18d\n",wardID[i],WardsName[i],dailyBedRatePerLKRDay[i],totalBedCapacity[i],0);
+    for (i = 0; i < Wards_Count; ++i) {
+        occupied = getOccupiedBedCount(i);
 
+        printf("%-10d %-30s %-28.2f %-20d %-18d\n",
+               wardID[i],
+               WardsName[i],
+               dailyBedRatePerLKRDay[i],
+               totalBedCapacity[i],
+               totalBedCapacity[i] - occupied);
     }
 }
 

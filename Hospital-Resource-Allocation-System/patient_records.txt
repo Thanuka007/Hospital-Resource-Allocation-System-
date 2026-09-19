@@ -19,3 +19,24 @@ Gross Total Bill        : LKR 62250.00
 Age Subsidy Discount    : LKR 0.00
 Final Amount Payable    : LKR 62250.00
 ============================================================
+
+============================================================
+              SMART HOSPITAL PATIENT RECORD
+============================================================
+Patient ID              : PAT-1001
+Patient Name            : Max
+Age                     : 30 Years
+Emergency Level         : 2
+Specialty               : Paediatrics
+Ward                    : Paediatric Ward
+Bed Number              : 2
+Days Admitted           : 10
+------------------------------------------------------------
+Base Consultation Fee   : LKR 2500.00
+Emergency Surcharge     : LKR 1250.00
+Ward Stay Cost          : LKR 60000.00
+------------------------------------------------------------
+Gross Total Bill        : LKR 63750.00
+Age Subsidy Discount    : LKR 0.00
+Final Amount Payable    : LKR 63750.00
+============================================================
