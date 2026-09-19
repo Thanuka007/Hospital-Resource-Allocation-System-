@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 #define Specialty_Count 4
 #define MAX_Patients 100
@@ -160,4 +161,49 @@ void displayBedOccupancyStatus() {
         printf("----------------------------------------------------\n");
     }
 }
+
+
+void generatePerformanceReport() {
+    int urgencyCount[4] = {0, 0, 0, 0};
+    int i, j, occupied, highestPayingPatient = -1;
+    float totalRevenue = 0.0, totalDiscount = 0.0;
+
+    for (i = 0; i < patientCount; ++i) {
+        urgencyCount[patientmergencyLevel[i]]++;
+        totalRevenue += patientFinalAmountPayable[i];
+        totalDiscount += patientAgeSubsidyDiscount[i];
+        if (highestPayingPatient == -1 ||
+            patientFinalAmountPayable[i] > patientFinalAmountPayable[highestPayingPatient]) {
+            highestPayingPatient = i;
+        }
+    }
+
+    printf("\n---------- Performance Report & Analytics ----------\n");
+    printf("Total patients registered   : %d\n", patientCount);
+    printf("Normal patients (Level 1)   : %d\n", urgencyCount[1]);
+    printf("Urgent patients (Level 2)   : %d\n", urgencyCount[2]);
+    printf("Critical patients (Level 3) : %d\n", urgencyCount[3]);
+    printf("Total revenue earned        : LKR %.2f\n", totalRevenue);
+    printf("Total discounts granted     : LKR %.2f\n", totalDiscount);
+    printf("\nBed occupancy percentage per ward>>\n");
+    for (j = 0; j < Wards_Count; ++j) {
+        occupied = getOccupiedBedCount(j);
+        printf("%-30s : %.1f%%\n", WardsName[j],
+               (100.0 * occupied) / totalBedCapacity[j]);
+    }
+    if (highestPayingPatient == -1) {
+        printf("Highest-paying patient  : No patients registered.\n");
+    } else {
+        printf("Highest-paying patient  : PAT-%04d - %s (LKR %.2f)\n",
+               patientID[highestPayingPatient], patientName[highestPayingPatient],
+               patientFinalAmountPayable[highestPayingPatient]);
+    }
+    printf("----------------------------------------------------\n");
+}
+
+
+void clearscreen(){
+    system("cls");
+}
+
 

@@ -7,6 +7,7 @@ void listWardsData();
 void patientRegistration();
 void displayPriorityOrder();
 void displayBedOccupancyStatus();
+void generatePerformanceReport();
 
 
 int main(){
@@ -33,6 +34,7 @@ int main(){
                 listWardsData();
                 break;
             case 6: //Generate performance report
+                generatePerformanceReport();
                 break;
             case 7:
                 printf("Exit program ,GOODBYE");
