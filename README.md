@@ -16,6 +16,50 @@ A command-line Smart Hospital & Resource Allocation System developed in C. The p
 - Save patient billing records to a text file.
 - Save and restore bed-occupancy status between program runs.
 
+# 📷 Program Preview
+
+## Smart Hospital Main Menu
+
+<img width="785" height="465" alt="Screenshot 2026-09-19 233202" src="https://github.com/user-attachments/assets/fe7a85c8-bd33-4015-8827-c9aa1bc0317d" />
+
+---
+
+## Smart Hospital admission and bill
+
+<img width="905" height="471" alt="Screenshot 2026-09-19 233253" src="https://github.com/user-attachments/assets/8473ff50-64da-46d8-bf6f-694c426eb6c3" />
+
+---
+
+## Bed Occupancy Status
+
+<img width="795" height="845" alt="Screenshot 2026-09-19 233308" src="https://github.com/user-attachments/assets/de018fc1-3633-4304-8afc-3670d9e0441d" />
+
+---
+
+## Doctor Specialties Data 
+
+<img width="1545" height="182" alt="Screenshot 2026-09-19 233326" src="https://github.com/user-attachments/assets/235017d2-2c9a-4e15-969c-a0fa380a9fe8" />
+
+---
+
+## Hospital Wards Data
+
+<img width="1437" height="180" alt="Screenshot 2026-09-19 233335" src="https://github.com/user-attachments/assets/354ecd9e-0ef1-484f-b9ab-fcdd8768dbe9" />
+
+---
+
+## Performance Report & Analytics 
+
+<img width="815" height="400" alt="Screenshot 2026-09-19 233354" src="https://github.com/user-attachments/assets/8663078a-99b4-4910-a3bf-5f16a7e73b44" />
+
+---
+
+## Saved Patient Records 
+
+<img width="874" height="543" alt="Screenshot 2026-09-19 233409" src="https://github.com/user-attachments/assets/11cbcb97-f3f2-4649-b6c0-edc64b1d28f6" />
+
+---
+
 ## Technologies Used
 
 - C Programming Language
