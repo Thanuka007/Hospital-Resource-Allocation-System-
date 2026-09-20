@@ -140,11 +140,13 @@ hospital.exe
 
 ## Input Validation
 
--The program validates patient age. 
--emergency level and specialty ID. 
--admission choice.
--ward ID, and number of admitted days. 
--It also prevents registrations after a specialty reaches its daily patient cap and prevents bed assignment when a ward is full.
+- The program validates patient age.
+- Emergency level, specialty ID.
+- Admission choice.
+- Ward ID and number of admitted days.
+- It also prevents registrations after a specialty reaches its daily patient cap and prevents bed assignment when a ward is full.
+
+---
 
 ## Author
 
